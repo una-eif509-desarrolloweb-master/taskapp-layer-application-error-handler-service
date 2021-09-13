@@ -4,5 +4,5 @@
  * mike@guzmanalan.com
  */
 
-INSERT INTO public.users (id_user, create_date, email, enabled, first_name, last_name, password, token_expired)
+INSERT INTO public.users (id_user, date_created, email, enabled, first_name, last_name, password, token_expired)
 VALUES (1, '2020-08-30 18:23:52.000000', 'mike@guzmanalan.com', true, 'Maikol', 'Guzman', '1234$una', false);

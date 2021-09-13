@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * DTO Mapper for Task
  *
- * @author Maikol Guzman <maikol@guzmanalan.com>
+ * @author Maikol Guzman <mike@guzmanalan.com>
  * @create 9/3/21
  */
 @Mapper(

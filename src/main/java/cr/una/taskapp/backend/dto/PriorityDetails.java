@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * DTO Result for Priority
  *
- * @author Maikol Guzman <maikol@guzmanalan.com>
+ * @author Maikol Guzman <mike@guzmanalan.com>
  * @create 9/3/21
  */
 @Data
