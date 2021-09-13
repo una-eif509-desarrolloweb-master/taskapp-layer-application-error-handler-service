@@ -2,6 +2,7 @@ package cr.una.taskapp.backend.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.joda.time.LocalDateTime;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -18,12 +19,14 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ApiError {
+    private String localDateTime;
     private HttpStatus status;
     private String message;
     private String debugMessage;
     private List<ApiSubError> apiSubErrors;
 
     private ApiError() {
+        localDateTime = LocalDateTime.now().toString();
     }
 
     public ApiError(HttpStatus status) {
