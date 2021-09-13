@@ -6,8 +6,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.validation.BindException;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -161,19 +159,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 builder.substring(0, builder.length() - 2), ex));
     }
 
-    // AppAuthenticationException
-    @ExceptionHandler({InsufficientAuthenticationException.class})
-    public ResponseEntity<Object> handleInsufficientAuthenticationException(
-            final InsufficientAuthenticationException ex,
-            final WebRequest request) {
-
-        ApiError apiError = new ApiError(HttpStatus.UNAUTHORIZED);
-        apiError.setMessage("Access Unauthorized");
-        apiError.setDebugMessage(ex.getMessage());
-        apiError.addSubError(new ApiSubError("000","Access Unauthorized"));
-        return buildResponseEntity(apiError);
-    }
-
     // NotFoundException
     @ExceptionHandler({NotFoundException.class})
     public ResponseEntity<Object> handleNotFoundException(
@@ -197,19 +182,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         apiError.setMessage("Element already exist");
         apiError.setDebugMessage(ex.getMessage());
         apiError.addSubError(new ApiSubError("002","Element already exist in the system"));
-        return buildResponseEntity(apiError);
-    }
-
-    // AuthenticationServiceException
-    @ExceptionHandler({AuthenticationServiceException.class})
-    public ResponseEntity<Object> handleRAuthenticationServiceException(
-            final AuthenticationServiceException ex,
-            final WebRequest request) {
-
-        ApiError apiError = new ApiError(HttpStatus.NOT_FOUND);
-        apiError.setMessage("error occurred");
-        apiError.setDebugMessage(ex.getMessage());
-        apiError.addSubError(new ApiSubError("001","Element not found"));
         return buildResponseEntity(apiError);
     }
 
